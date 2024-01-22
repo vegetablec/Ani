@@ -72,7 +72,7 @@ for i in range(0,50):
     xs.append(0)
     ys.append(0)
 
-circle_ani, = ax.plot([], [], 'ro', markersize=1)
+circle_ani, = ax.plot([], [], 'r', markersize=1)
 
 def init():
     ax.set_xlim(-10*r, 10*r)
