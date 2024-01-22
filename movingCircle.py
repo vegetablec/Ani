@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import time
+import ffmpeg
 
 fig, ax= plt.subplots()
 r = 1
@@ -23,7 +24,7 @@ x0 = -8*r
 y0 = dy/2
 sx = 0
 sy = 0
-detx = 0
+detx = 0 
 dety = -1
 #
 
@@ -85,9 +86,9 @@ def init():
 def updata(frame):
     t = int(frame*50/np.pi)
     frame = frame%(2*np.pi)
-    if t==100:
-        end = time.perf_counter()
-        print(end-start)
+    # if t==100:
+    #     end = time.perf_counter()
+    #     print(end-start)
     x, y = getXY(frame)
     x0, y0 = getX0Y0(frame)
     x = x0 + r*x
@@ -106,5 +107,6 @@ def updata(frame):
         return circle_ani,
     
 
-ani = FuncAnimation(fig, updata, np.linspace(0,n*2*np.pi,n*100), interval=(10/f), save_count=100, init_func=init, blit=True, repeat=False)
+ani = FuncAnimation(fig, updata, np.linspace(0,n*2*np.pi,n*100), interval=(10/f), init_func=init, blit=True, repeat=False)
+#ani.save('ani.gif', writer='pillow',fps=10)
 plt.show()
