@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection
-from matplotlib.animation import FuncAnimation
-import time
-import ffmpeg
 
 fig, ax= plt.subplots()
 
@@ -29,6 +26,7 @@ sy = 0
 detx = 0 
 dety = -1
 #
+
 
 def getXY(t):
     t = (t%m)/m*2*np.pi
