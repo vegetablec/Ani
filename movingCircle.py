@@ -10,11 +10,11 @@ r = 1
 dx = 1
 dy = 10
 
-v = 1#圆心在xy坐标上一秒移动的快慢
-f = 10 #转圈的快慢，数字越大越快
-n = 50 # n*200=图像一共的帧数,n为一共转的圈数
+v = 6#圆心在xy坐标上一秒移动的快慢
+f = 20 #转圈的快慢，数字越大越快
+n = 200 # n*200=图像一共的帧数,n为一共转的圈数
 #图像一共nf秒
-
+m = 20 #一圈的点数,应为偶数
 a=1 #数据保留1为保留全部数据，2为保留最后50条，3为不保留数据
 
 #--------------------------------------------------
@@ -72,7 +72,7 @@ for i in range(0,50):
     xs.append(0)
     ys.append(0)
 
-circle_ani, = ax.plot([], [], 'r', markersize=1)
+circle_ani, = ax.plot([], [], 'r', markersize=0.5)
 
 def init():
     ax.set_xlim(-10*r, 10*r)
@@ -84,7 +84,7 @@ def init():
     return circle_ani,
 
 def updata(frame):
-    t = int(frame*50/np.pi)
+    t = int(frame*m/2/np.pi)
     frame = frame%(2*np.pi)
     # if t==100:
     #     end = time.perf_counter()
@@ -107,6 +107,6 @@ def updata(frame):
         return circle_ani,
     
 
-ani = FuncAnimation(fig, updata, np.linspace(0,n*2*np.pi,n*100), interval=(10/f), init_func=init, blit=True, repeat=False)
+ani = FuncAnimation(fig, updata, np.linspace(0,n*2*np.pi,n*m), interval=(10/f), init_func=init, blit=True, repeat=False)
 #ani.save('ani.gif', writer='pillow',fps=10)
 plt.show()
