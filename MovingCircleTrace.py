@@ -6,10 +6,11 @@ import time
 import ffmpeg
 
 fig, ax= plt.subplots()
-r = 1
 
-dx = 1
-dy = 10
+r = 1 #圆的半径
+
+dx = 2 #x轴上的距离
+dy = 10 #y轴上的距离
 
 v = 10#圆心在xy坐标上一秒移动的快慢
 f = 40 #Hz,一秒的圈数
