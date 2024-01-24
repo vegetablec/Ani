@@ -6,8 +6,8 @@ fig, ax= plt.subplots()
 
 r = 1 #圆的半径
 
-dx = 2 #x轴上的距离
-dy = 10 #y轴上的距离
+dx = 0.9 #x轴上的距离
+dy = 11.5 #y轴上的距离
 
 v = 10#圆心在xy坐标上一秒移动的快慢
 f = 40 #Hz,一秒的圈数
@@ -40,25 +40,25 @@ def getX0Y0():
     if dety==-1 and detx==0:
         y0 = y0-dv
         sy = sy+dv
-        if int(sy) == dy:
+        if abs(sy-dy) <= 1e-5:
             detx = 1
             dety = 0
             sy=0
     elif dety==1 and detx==0:
         y0 = y0+dv
         sy = sy+dv
-        if int(sy)==dy:
+        if abs(sy-dy) <= 1e-5:
             detx = 1
             dety = 0
             sy=0
     elif dety==0 and detx==1:
         x0 = x0+dv
         sx = sx+dv
-        if int(sx)==dx and int(y0)==dy/2:
+        if abs(sx-dx)<=1e-5 and abs(y0-(dy/2))<=1e-5:
             dety = -1
             detx = 0
             sx = 0
-        elif int(sx)==dx and int(y0)==(-dy/2):
+        elif abs(sx-dx)<=1e-5 and abs(y0+(dy/2))<=1e-5:
             dety = 1
             detx = 0
             sx = 0
